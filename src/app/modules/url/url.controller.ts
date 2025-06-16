@@ -3,7 +3,6 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { UrlServices } from './url.service';
 import getBaseUrl from '../../utils/getBaseUrl';
-import config from '../../config';
 
 const createShortUrl = catchAsync(async (req, res) => {
     const baseUrl = getBaseUrl(req);
@@ -21,7 +20,8 @@ const redirectToOriginalUrl = catchAsync(async (req, res) => {
 });
 
 const redirectBaseUrlToClient = catchAsync(async (req, res) => {
-    res.redirect(config.client_url as string);
+    const result = await UrlServices.redirectBaseUrlToClient();
+    res.redirect(result);
 });
 
 export const UrlControllers = {

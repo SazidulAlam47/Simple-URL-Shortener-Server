@@ -28,7 +28,12 @@ const redirectToOriginalUrl = async (shortId: string) => {
     return result?.originalUrl;
 };
 
+const redirectBaseUrlToClient = async () => {
+    return config.client_url as string;
+};
+
 export const UrlServices = {
     createShortUrl,
     redirectToOriginalUrl,
+    redirectBaseUrlToClient,
 };
